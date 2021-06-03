@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CNABParser.Business\CNABParser.Business.csproj" />
     <ProjectReference Include="..\CNABParser.Data\CNABParser.Data.csproj" />
   </ItemGroup>
 

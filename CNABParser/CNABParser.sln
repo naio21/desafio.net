@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CNABParser.MVC", "CNABParse
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CNABParser.Data", "CNABParser.Data\CNABParser.Data.csproj", "{03399803-3A7C-4ACF-B07C-700ECBA7E6F8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CNABParser.Business", "CNABParser.Business\CNABParser.Business.csproj", "{D489FE0B-EC1F-4D0B-A197-3A0574C22554}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{03399803-3A7C-4ACF-B07C-700ECBA7E6F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03399803-3A7C-4ACF-B07C-700ECBA7E6F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03399803-3A7C-4ACF-B07C-700ECBA7E6F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D489FE0B-EC1F-4D0B-A197-3A0574C22554}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D489FE0B-EC1F-4D0B-A197-3A0574C22554}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D489FE0B-EC1F-4D0B-A197-3A0574C22554}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D489FE0B-EC1F-4D0B-A197-3A0574C22554}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

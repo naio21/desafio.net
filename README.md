@@ -5,7 +5,7 @@ Para a resolução do desafio, utilizei as seguintes tecnologias:
 - Entity Framework Core
 - SQL Server Express LocalDB
 
-Versão do Framework: 5.0
+Versão do Framework: 5.0  
 Versão do Visual Studio: Enterprise 2019.
 
 # Instruções para setup inicial da aplicação

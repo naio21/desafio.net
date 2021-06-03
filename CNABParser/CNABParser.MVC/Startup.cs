@@ -1,3 +1,6 @@
+using CNABParser.Business.Interfaces;
+using CNABParser.Business.Services;
+using CNABParser.Data.Interfaces;
 using CNABParser.Data.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -23,6 +26,8 @@ namespace CNABParser.MVC
             services.AddDbContext<CNABContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
+            services.AddScoped<ITransacaoService, TransacaoService>();
+            services.AddScoped<ITransacaoRepository, TransacaoRepository>();
             services.AddControllersWithViews();
         }
 
