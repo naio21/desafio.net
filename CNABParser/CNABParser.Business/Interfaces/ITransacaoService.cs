@@ -9,5 +9,6 @@ namespace CNABParser.Business.Interfaces
     public interface ITransacaoService
     {
         public Task<IEnumerable<Transacao>> GetAllAsync();
+        public Task ProcessaArquivoAsync(string filePath);
     }
 }

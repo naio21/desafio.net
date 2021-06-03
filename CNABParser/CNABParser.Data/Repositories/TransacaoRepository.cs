@@ -17,7 +17,16 @@ namespace CNABParser.Data.Repositories
 
         public async Task<IEnumerable<Transacao>> GetAllTransacoesAsync()
         {
-            return await _context.Transacoes.ToListAsync();
+            return await _context
+                .Transacoes
+                .Include(x => x.Tipo)
+                .ToListAsync();
+        }
+
+        public async Task AddListTransacoesAsync(IEnumerable<Transacao> transacoes)
+        {
+            await _context.AddRangeAsync(transacoes);
+            await _context.SaveChangesAsync();
         }
     }
 }

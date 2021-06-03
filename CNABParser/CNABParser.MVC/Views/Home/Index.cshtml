@@ -2,76 +2,87 @@
 
 @{
     ViewData["Title"] = "Index";
+    double total = 0d;
 }
 
 <h1>Upload e processamento de arquivo</h1>
 
 <div class="card-body">
-    <form id="form" enctype="multipart/form-data" class="needs-validation" novalidate asp-action="ArquivoForm">
+    <form id="form" enctype="multipart/form-data" class="needs-validation" asp-controller="Home" asp-action="ArquivoForm">
         <div class="form-row">
             <div class="form-group col-md-12">
                 <label for="arquivo">Arquivo para upload *</label>
                 <input type="file" class="form-control" id="arquivo" name="arquivo" required />
-                <div class="invalid-feedback">O Arquivo deve ser informado</div>
             </div>
         </div>
-        <button type="button" id="btnSalvar" class="btn btn-primary">Salvar</button>
+        <button type="submit" id="btnSalvar" class="btn btn-primary">Salvar</button>
     </form>
 </div>
-<div class="card-body">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.DataTransacao)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Valor)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CPF)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Cartao)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Proprietario)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.RazaoSocial)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
+@if (Model.Any())
+{
+    <div class="card-body">
+        <table class="table">
+            <thead>
                 <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Tipo.Descricao)
+                    </th>
+                    <th style="text-align:right">
+                        @Html.DisplayNameFor(model => model.Valor)
+                    </th>
+                    <th style="text-align:center">
+                        @Html.DisplayNameFor(model => model.CPF)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Cartao)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Proprietario)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.RazaoSocial)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Tipo.Descricao)
+                        </td>
+                        <td style="text-align:right">
+                            @{
+                                double valor = item.Valor * item.Tipo.Natureza;
+                                total += valor;
+                            }
+                            @valor.ToString("N2")
+                        </td>
+                        <td style="text-align:center">
+                            @Html.DisplayFor(modelItem => item.CPF)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cartao)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Proprietario)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RazaoSocial)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tbody>
+                <tr style="font-weight:bold">
                     <td>
-                        @Html.DisplayFor(modelItem => item.DataTransacao)
+                        Saldo final
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Valor)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CPF)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Cartao)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Proprietario)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.RazaoSocial)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                    <td style="text-align:right; column-span:5">
+                        @total.ToString("N2")
                     </td>
                 </tr>
-            }
-        </tbody>
-    </table>
-</div>
+            </tbody>
+        </table>
+    </div>
+}

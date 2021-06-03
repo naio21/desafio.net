@@ -7,5 +7,6 @@ namespace CNABParser.Data.Interfaces
     public interface ITransacaoRepository
     {
         public Task<IEnumerable<Transacao>> GetAllTransacoesAsync();
+        public Task AddListTransacoesAsync(IEnumerable<Transacao> transacoes);
     }
 }
