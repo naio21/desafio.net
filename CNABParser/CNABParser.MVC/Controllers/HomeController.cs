@@ -33,16 +33,15 @@ namespace CNABParser.MVC.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> ArquivoForm(IFormCollection collection)
+        public async Task<IActionResult> ArquivoForm(IFormFile arquivo)
         {
             try
             {
-                IFormFile arquivoCNAB = collection.Files[0];
-                if(arquivoCNAB.ContentType != "text/plain")
+                if(arquivo.ContentType != "text/plain")
                 {
                     return StatusCode(StatusCodes.Status415UnsupportedMediaType, "Arquivo inválido");
                 }
-                await UploadFile(arquivoCNAB);
+                await UploadFile(arquivo);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
